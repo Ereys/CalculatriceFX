@@ -22,7 +22,10 @@ public class Calculator {
     }
 
     public Calcul getLastCalcul(){
-        return this.historyCalcul.get(historyCalcul.size()-1);
+        if(historyCalcul.size() > 0) {
+            return this.historyCalcul.get(historyCalcul.size() - 1);
+        }
+        throw new IllegalArgumentException("Erreur, pas de calcul en mémoire");
     }
 
     public void displayCalculHistory(){

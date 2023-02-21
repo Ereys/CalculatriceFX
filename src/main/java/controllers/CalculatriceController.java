@@ -96,9 +96,12 @@ public class CalculatriceController implements Initializable {
         this.history.displayCalculHistory();
         this.secondValue = false;
         this.currentCalcul = CalculBuilder.builde();
-        this.toStringCalcul.setText(this.currentCalcul.toString()); // Calcul squelette
-
-        this.resultLabel.setText("Memoire: " + this.history.getLastCalcul().toString());
+        try {
+            this.toStringCalcul.setText(this.currentCalcul.toString()); // Calcul squelette
+            this.resultLabel.setText("Memoire: " + this.history.getLastCalcul().toString());
+        }catch (Exception exc){
+            this.resultLabel.setText(exc.getMessage());
+        }
     }
 
     /**
@@ -133,10 +136,14 @@ public class CalculatriceController implements Initializable {
     @FXML
     public void handleOnEgalClick(MouseEvent e){
 
-        if(!this.currentCalcul.getValue1().isEmpty() && !this.currentCalcul.getValue2().isEmpty()){
-            Calcul c = this.currentCalcul.build();
-            this.resultLabel.setText(Double.toString(c.getResult()));
-            this.history.addCalcul(c);
+        try {
+            if (!this.currentCalcul.getValue1().isEmpty() && !this.currentCalcul.getValue2().isEmpty()) {
+                Calcul c = this.currentCalcul.build();
+                this.resultLabel.setText(Double.toString(c.getResult()));
+                this.history.addCalcul(c);
+            }
+        }catch (Exception exc){
+            this.resultLabel.setText(exc.getMessage());
         }
         this.toStringCalcul.setText(this.currentCalcul.toString()); // Calcul squelette
         this.secondValue = false;
