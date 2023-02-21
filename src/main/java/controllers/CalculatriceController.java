@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import models.Calcul;
 import models.CalculBuilder;
 import models.Calculator;
@@ -21,6 +23,8 @@ public class CalculatriceController implements Initializable {
     Label resultLabel;
     @FXML
     Label toStringCalcul;
+    @FXML
+    AnchorPane root;
 
     private boolean secondValue = false;
 
@@ -153,6 +157,10 @@ public class CalculatriceController implements Initializable {
     @FXML
     public void handleOnCloseClick(MouseEvent e){
         System.exit(0);
+    }
+    @FXML
+    public void handleOnMinimizeClick(MouseEvent e){
+        ((Stage)   root.getScene().getWindow()).setIconified(true);
     }
 
 }

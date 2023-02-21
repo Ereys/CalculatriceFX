@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="325.0" stylesheets="@../css/CalculatriceAppStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CalculatriceController">
+<AnchorPane id="root" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="325.0" stylesheets="@../css/CalculatriceAppStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CalculatriceController">
    <children>
       <Pane id="toolB" layoutY="6.0" prefHeight="27.0" prefWidth="325.0" styleClass="toolBar" stylesheets="@../css/CalculatriceAppStyle.css" AnchorPane.bottomAnchor="523.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -26,10 +26,25 @@
                   <Image url="@../img/close.png" />
                </image>
             </ImageView>
-         </children></Pane>
+            <ImageView fitHeight="17.0" fitWidth="13.0" layoutX="278.0" layoutY="7.0" onMouseClicked="#handleOnMinimizeClick" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/minimize-sign.png" />
+               </image>
+            </ImageView>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets></Pane>
       <Pane layoutY="27.0" prefHeight="524.0" prefWidth="325.0" styleClass="main" stylesheets="@../css/CalculatriceAppStyle.css" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
          <children>
-            <Pane layoutY="69.0" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="325.0" styleClass="result" />
+            <Pane layoutY="69.0" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="325.0" styleClass="result">
+               <children>
+                  <Label fx:id="resultLabel" alignment="CENTER_RIGHT" layoutY="16.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="325.0" styleClass="labelResult" text="0">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
             <GridPane alignment="CENTER" layoutY="172.0" minWidth="-Infinity" prefHeight="354.0" prefWidth="325.0" styleClass="panelGridButtonCalculator">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -78,18 +93,13 @@
             </GridPane>
             <Pane layoutY="23.0" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="325.0" styleClass="result">
                <children>
-                  <Label fx:id="resultLabel" alignment="CENTER_RIGHT" layoutY="16.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="325.0" styleClass="labelResult" text="0">
+                  <Label fx:id="toStringCalcul" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="59.0" prefWidth="325.0" styleClass="toStringCalcul" text="0">
                      <font>
                         <Font name="Arial" size="20.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <Label fx:id="toStringCalcul" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="59.0" prefWidth="325.0" styleClass="toStringCalcul" text="0">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font>
-            </Label>
          </children>
       </Pane>
    </children>
