@@ -21,6 +21,11 @@
                </image>
             </ImageView>
             <Label layoutX="24.0" layoutY="5.0" prefHeight="17.0" prefWidth="69.0" text="Calculatrice" />
+            <ImageView fitHeight="17.0" fitWidth="13.0" layoutX="302.0" layoutY="6.0" onMouseClicked="#handleOnCloseClick" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/close.png" />
+               </image>
+            </ImageView>
          </children></Pane>
       <Pane layoutY="27.0" prefHeight="524.0" prefWidth="325.0" styleClass="main" stylesheets="@../css/CalculatriceAppStyle.css" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
          <children>

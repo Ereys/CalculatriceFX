@@ -3,8 +3,11 @@
 }
 
 .toolBar{
+   -fx-border-style: none none solid none;
+   -fx-background-color: white;
    -fx-border-width:1;
-    -fx-border-color: black;
+   -fx-border-color: black;
+
 }
 
 .main{
@@ -30,5 +33,5 @@
         -fx-border-radius: 5;
         -fx-border-width:1;
         -fx-border-color: black;
-        -fx-background-color: #f9f9f9;
+        -fx-background-color: white;
     }

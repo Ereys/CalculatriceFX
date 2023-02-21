@@ -21,6 +21,10 @@ public class Calculator {
         return historyCalcul;
     }
 
+    public Calcul getLastCalcul(){
+        return this.historyCalcul.get(historyCalcul.size()-1);
+    }
+
     public void displayCalculHistory(){
         System.out.println("___________________________");
         for (Calcul item: this.historyCalcul) {

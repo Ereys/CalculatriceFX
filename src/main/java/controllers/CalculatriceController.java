@@ -54,11 +54,13 @@ public class CalculatriceController implements Initializable {
      */
     @FXML
     public void handleOnOperationClick(MouseEvent e){
-        this.secondValue = true;
-        String toConcat = ((Label) e.getSource()).getText();
-        this.currentCalcul.setOperation(toConcat);
+        if(!this.currentCalcul.getValue1().isEmpty()) {
+            this.secondValue = true;
+            String toConcat = ((Label) e.getSource()).getText();
+            this.currentCalcul.setOperation(toConcat);
 
-        this.toStringCalcul.setText(this.currentCalcul.toString()); // Calcul squelette
+            this.toStringCalcul.setText(this.currentCalcul.toString()); // Calcul squelette
+        }
     }
 
     /**
@@ -88,6 +90,11 @@ public class CalculatriceController implements Initializable {
     @FXML
     public void handleOnShowMemoryClick(MouseEvent e){
         this.history.displayCalculHistory();
+        this.secondValue = false;
+        this.currentCalcul = CalculBuilder.builde();
+        this.toStringCalcul.setText(this.currentCalcul.toString()); // Calcul squelette
+
+        this.resultLabel.setText("Memoire: " + this.history.getLastCalcul().toString());
     }
 
     /**
@@ -121,12 +128,13 @@ public class CalculatriceController implements Initializable {
      */
     @FXML
     public void handleOnEgalClick(MouseEvent e){
-        Calcul c = this.currentCalcul.build();
 
-        this.resultLabel.setText(Double.toString(c.getResult())); //  Result
+        if(!this.currentCalcul.getValue1().isEmpty() && !this.currentCalcul.getValue2().isEmpty()){
+            Calcul c = this.currentCalcul.build();
+            this.resultLabel.setText(Double.toString(c.getResult()));
+            this.history.addCalcul(c);
+        }
         this.toStringCalcul.setText(this.currentCalcul.toString()); // Calcul squelette
-
-        this.history.addCalcul(c);
         this.secondValue = false;
         this.currentCalcul = CalculBuilder.builde();
     }
@@ -135,12 +143,16 @@ public class CalculatriceController implements Initializable {
      * Clear the current calcul when the user click on "C"
      *
      */
-
     @FXML void handleOnClearClick(MouseEvent e){
         this.currentCalcul = CalculBuilder.builde();
         this.secondValue = false;
         this.resultLabel.setText("0");
         this.toStringCalcul.setText("");
+    }
+
+    @FXML
+    public void handleOnCloseClick(MouseEvent e){
+        System.exit(0);
     }
 
 }
