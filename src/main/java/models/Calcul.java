@@ -35,7 +35,6 @@ public class Calcul {
         }
         this.result = value1 / value2;
     }
-
     @Override
     public String toString() {
         return value1 + " " + operation + " " + value2 + " = " + result;
