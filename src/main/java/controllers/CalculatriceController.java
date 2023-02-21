@@ -68,7 +68,8 @@ public class CalculatriceController implements Initializable {
     @FXML
     public void handleOnSpecialOperationClick(MouseEvent e){
         String toConcat = ((Label) e.getSource()).getText();
-        this.currentCalcul.
+
+        this.resultLabel.setText("Not supported yet !");
     }
 
     /**
@@ -76,7 +77,7 @@ public class CalculatriceController implements Initializable {
      *
      */
     public void handleOnSwitchClick(MouseEvent e){
-
+        this.resultLabel.setText("Not supported yet !");
     }
 
 
@@ -103,13 +104,14 @@ public class CalculatriceController implements Initializable {
      *
      */
     public void handleOnReturnClick(MouseEvent e){
-        if(!secondValue){
+     /*   if(!secondValue){
             this.currentCalcul.subToFirstValue();
             this.resultLabel.setText(this.currentCalcul.getValue1()); //  Result
         }else{
             this.currentCalcul.subToSecondValue();
             this.resultLabel.setText(this.currentCalcul.getValue2()); //  Result
-        }
+        }*/
+        this.resultLabel.setText("Not supported yet !");
     }
 
 

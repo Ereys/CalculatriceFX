@@ -2,15 +2,16 @@ package models;
 
 import utils.StringManipulation;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class CalculBuilder implements AbstractCalculBuilder{
 
     private String  value1 = "";
     private String value2 = "";
     private String operator= "";
 
+
+    /**
+     * Allow to build calcul
+     */
     private CalculBuilder(){};
 
     public static CalculBuilder builde(){
