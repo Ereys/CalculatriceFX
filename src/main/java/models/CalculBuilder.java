@@ -1,5 +1,7 @@
 package models;
 
+import utils.StringManipulation;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,8 +10,6 @@ public class CalculBuilder implements AbstractCalculBuilder{
     private String  value1 = "";
     private String value2 = "";
     private String operator= "";
-
-    List<String> operatorAllowed = Arrays.asList("+", "-", "/", "x");
 
     private CalculBuilder(){};
 
@@ -31,6 +31,11 @@ public class CalculBuilder implements AbstractCalculBuilder{
     }
 
     @Override
+    public void subToFirstValue() {
+        this.value1  = StringManipulation.removeLastChar(this.value1);
+    }
+
+    @Override
     public void addToSecondValue(String b) {
         if(b.equals(".")){
             if(!this.value2.contains(".") && !this.value2.isEmpty()) {
@@ -42,11 +47,17 @@ public class CalculBuilder implements AbstractCalculBuilder{
     }
 
     @Override
+    public void subToSecondValue() {
+       this.value2 =  StringManipulation.removeLastChar(this.value2);
+    }
+
+    @Override
     public void setOperation(String op) {
         if(this.operator.isEmpty()){
             this.operator = op;
         }
     }
+
 
     @Override
     public Calcul build() {
@@ -59,9 +70,9 @@ public class CalculBuilder implements AbstractCalculBuilder{
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        if(value2 != null)sb.append(value2);
-        if(operator != null) sb.append(operator);
         if(value1 != null) sb.append(value1);
+        if(operator != null) sb.append(operator);
+        if(value2 != null)sb.append(value2);
         sb.append("=");
         return sb.toString();
     }

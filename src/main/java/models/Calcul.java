@@ -23,6 +23,7 @@ public class Calcul {
             case "-" -> sub();
             case "x" -> mul();
             case "/" -> div();
+            case "%" -> mod();
         }
     }
 
@@ -41,6 +42,10 @@ public class Calcul {
             throw new ArithmeticException("Cannot divide by 0");
         }
         this.result = value1 / value2;
+    }
+
+    public void mod(){
+        this.result = this.value1%this.value2;
     }
 
     public double getResult(){

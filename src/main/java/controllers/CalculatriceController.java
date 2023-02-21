@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import models.Calcul;
 import models.CalculBuilder;
 import models.Calculator;
+import utils.StringManipulation;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,7 +38,7 @@ public class CalculatriceController implements Initializable {
     @FXML
     public void handleOnNumberClick(MouseEvent e){
         String toConcat = ((Label) e.getSource()).getText();
-        if(secondValue){
+        if(!secondValue){
             this.currentCalcul.addToFirstValue(toConcat);
             this.resultLabel.setText(this.currentCalcul.getValue1()); //  Result
         }else{
@@ -53,6 +54,20 @@ public class CalculatriceController implements Initializable {
         this.currentCalcul.setOperation(toConcat);
 
         this.toStringCalcul.setText(this.currentCalcul.toString()); // Calcul squelette
+    }
+
+    public void handleOnSwitchClick(MouseEvent e){
+
+    }
+
+    public void handleOnReturnClick(MouseEvent e){
+        if(!secondValue){
+            this.currentCalcul.subToFirstValue();
+            this.resultLabel.setText(this.currentCalcul.getValue1()); //  Result
+        }else{
+            this.currentCalcul.subToSecondValue();
+            this.resultLabel.setText(this.currentCalcul.getValue2()); //  Result
+        }
     }
 
     @FXML
