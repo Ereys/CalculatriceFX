@@ -28,4 +28,8 @@ public class Calculator {
         }
         System.out.println("___________________________");
     }
+
+    public void clearHistory(){
+        this.historyCalcul.clear();
+    }
 }

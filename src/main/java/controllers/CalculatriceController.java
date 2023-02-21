@@ -1,15 +1,12 @@
 package controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import models.Calcul;
 import models.CalculBuilder;
 import models.Calculator;
-import utils.StringManipulation;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,6 +32,10 @@ public class CalculatriceController implements Initializable {
         this.resultLabel.setText("0");
     }
 
+    /**
+     * Handle the input of the numbers
+     *
+     */
     @FXML
     public void handleOnNumberClick(MouseEvent e){
         String toConcat = ((Label) e.getSource()).getText();
@@ -47,6 +48,10 @@ public class CalculatriceController implements Initializable {
         }
     }
 
+    /**
+     * Handle the following operation : +,-,x and /
+     *
+     */
     @FXML
     public void handleOnOperationClick(MouseEvent e){
         this.secondValue = true;
@@ -56,10 +61,47 @@ public class CalculatriceController implements Initializable {
         this.toStringCalcul.setText(this.currentCalcul.toString()); // Calcul squelette
     }
 
+    /**
+     * Handle the following operations : x^2, 2√x and 1/x
+     *
+     */
+    @FXML
+    public void handleOnSpecialOperationClick(MouseEvent e){
+        String toConcat = ((Label) e.getSource()).getText();
+        this.currentCalcul.
+    }
+
+    /**
+     * Handle the switch between positiv and negativ number when the user click on "+/-"
+     *
+     */
     public void handleOnSwitchClick(MouseEvent e){
 
     }
 
+
+    /**
+     * Display the memory when the user click on "M"
+     *
+     */
+    @FXML
+    public void handleOnShowMemoryClick(MouseEvent e){
+        this.history.displayCalculHistory();
+    }
+
+    /**
+     * Handle the clear of the memory when the user click on "CM"
+     *
+     */
+    @FXML
+    public void handleOnClearMemoryClick(MouseEvent e){
+        this.history.clearHistory();
+    }
+
+    /**
+     * Delete the last input from the current number when the user click on "return"
+     *
+     */
     public void handleOnReturnClick(MouseEvent e){
         if(!secondValue){
             this.currentCalcul.subToFirstValue();
@@ -70,6 +112,11 @@ public class CalculatriceController implements Initializable {
         }
     }
 
+
+    /**
+     * Do the calcul, show the calcul, and add to the memory when the user click on "="
+     *
+     */
     @FXML
     public void handleOnEgalClick(MouseEvent e){
         Calcul c = this.currentCalcul.build();
@@ -81,6 +128,11 @@ public class CalculatriceController implements Initializable {
         this.secondValue = false;
         this.currentCalcul = CalculBuilder.builde();
     }
+
+    /**
+     * Clear the current calcul when the user click on "C"
+     *
+     */
 
     @FXML void handleOnClearClick(MouseEvent e){
         this.currentCalcul = CalculBuilder.builde();
