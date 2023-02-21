@@ -10,12 +10,20 @@
     -fx-background-color: yellow;
 }
 
-.result{}
+.result{
+}
+
+.labelResult{
+    -fx-font: 50px Arial;
+}
+
+.panelGridButtonCalculator{
+    -fx-space: 5;
+}
 
     .labelCalculator{
         -fx-border-radius: 5;
         -fx-border-width:1;
         -fx-border-color: black;
         -fx-background-color: green;
-        -fx-width: 100%;
     }
