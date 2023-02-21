@@ -1,1 +1,1 @@
-![calculette](src/main/ressources/img/calculette.png)
+![calculette](src/main/ressources/img/calculetteImg.png)
