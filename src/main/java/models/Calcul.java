@@ -17,6 +17,13 @@ public class Calcul {
         this.value1 = a;
         this.value2 = b;
         this.operation = operation;
+
+        switch(this.operation){
+            case "+" -> add();
+            case "-" -> sub();
+            case "x" -> mul();
+            case "/" -> div();
+        }
     }
 
     public void add(){
@@ -35,6 +42,19 @@ public class Calcul {
         }
         this.result = value1 / value2;
     }
+
+    public double getResult(){
+        return this.result;
+    }
+
+    public double getValue1() {
+        return value1;
+    }
+
+    public double getValue2() {
+        return value2;
+    }
+
     @Override
     public String toString() {
         return value1 + " " + operation + " " + value2 + " = " + result;

@@ -13,6 +13,10 @@ public class Calculator {
         this.historyCalcul = new ArrayList<Calcul>();
     }
 
+    public void addCalcul(Calcul c){
+        this.historyCalcul.add(c);
+    }
+
     public ArrayList<Calcul> getHistoryCalcul() {
         return historyCalcul;
     }

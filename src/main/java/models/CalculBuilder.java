@@ -5,11 +5,11 @@ import java.util.List;
 
 public class CalculBuilder implements AbstractCalculBuilder{
 
-    private double value1;
-    private double value2;
-    private String operator;
+    private String  value1 = "";
+    private String value2 = "";
+    private String operator= "";
 
-    List<String> operatorAllowed = Arrays.asList("+", "-", "/", "*");
+    List<String> operatorAllowed = Arrays.asList("+", "-", "/", "x");
 
     private CalculBuilder(){};
 
@@ -18,25 +18,58 @@ public class CalculBuilder implements AbstractCalculBuilder{
     }
 
     @Override
-    public void setFirstValue(double a) {
-        this.value1 = a;
+    public void addToFirstValue(String a) {
+        if(a.equals(".")){
+            System.out.println("a = .");
+            if(!this.value1.contains(".") && !this.value1.isEmpty()) {
+                System.out.println("first .");
+                this.value1 = value1 + a;
+            }
+        }else{
+            this.value1 = value1 + a;
+        }
+    }
+
+    @Override
+    public void addToSecondValue(String b) {
+        if(b.equals(".")){
+            if(!this.value2.contains(".") && !this.value2.isEmpty()) {
+                this.value2 = value2 + b;
+            }
+        }else{
+            this.value2 = value2 + b;
+        }
     }
 
     @Override
     public void setOperation(String op) {
-        if(operatorAllowed.contains(op)){
+        if(this.operator.isEmpty()){
             this.operator = op;
         }
-        throw new IllegalArgumentException("Wrong operator");
-    }
-
-    @Override
-    public void setSecondValue(double b) {
-        this.value2 = b;
     }
 
     @Override
     public Calcul build() {
-        return new Calcul(this.value1, this.value2, this.operator);
+        return new Calcul(
+                Double.parseDouble(this.value1),
+                Double.parseDouble(this.value2),
+                this.operator);
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        if(value2 != null)sb.append(value2);
+        if(operator != null) sb.append(operator);
+        if(value1 != null) sb.append(value1);
+        sb.append("=");
+        return sb.toString();
+    }
+    public String getValue1() {
+        return value1;
+    }
+    public String getValue2() {
+        return value2;
+    }
+
 }
