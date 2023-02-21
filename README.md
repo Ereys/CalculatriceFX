@@ -1,0 +1,1 @@
+![calculette](src/main/ressources/img/calculette.png)
