@@ -3,11 +3,7 @@
 }
 
 .toolBar{
-   -fx-border-style: none none solid none;
    -fx-background-color: white;
-   -fx-border-width:1;
-   -fx-border-color: black;
-
 }
 
 .main{
