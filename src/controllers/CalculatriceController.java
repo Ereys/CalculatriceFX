@@ -5,7 +5,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import calcul.Calcul;
 import calcul.CalculBuilder;
@@ -15,8 +14,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CalculatriceController implements Initializable {
-
-    private HistoryCalculette history;
 
     private CalculBuilder currentCalcul;
 
@@ -32,7 +29,6 @@ public class CalculatriceController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.history = HistoryCalculette.getHistoryInstance();
         this.currentCalcul = CalculBuilder.builde();
         this.resultLabel.setText("0");
     }
@@ -60,9 +56,13 @@ public class CalculatriceController implements Initializable {
      */
     @FXML
     public void handleOnOperationClick(MouseEvent e){
-        if(!this.currentCalcul.getValue1().isEmpty()) {
+        String toConcat = ((Label) e.getSource()).getText();
+        if(!this.currentCalcul.getOperation().isEmpty() && !this.currentCalcul.getValue2().isEmpty()){
+            this.currentCalcul.setOperation(toConcat);
+            updateResultCalcul();
+        }
+        else if(!this.currentCalcul.getValue1().isEmpty()) {
             this.secondValue = true;
-            String toConcat = ((Label) e.getSource()).getText();
             this.currentCalcul.setOperation(toConcat);
             displayResult("", this.currentCalcul.toString());
         }
@@ -83,9 +83,9 @@ public class CalculatriceController implements Initializable {
 
             // Afficher les résultats
             displayResult(Double.toString(c.getResult()), this.currentCalcul.toStringWithSpecialOperation());
-            this.history.addCalcul(c);
+            HistoryCalculette.getHistoryInstance().addCalcul(c);
             this.currentCalcul = CalculBuilder.builde();
-            this.currentCalcul.addToFirstValue(Double.toString(this.history.getLastCalcul().getResult()));
+            this.currentCalcul.addToFirstValue(Double.toString( HistoryCalculette.getHistoryInstance().getLastCalcul().getResult()));
         }
     }
 
@@ -105,10 +105,9 @@ public class CalculatriceController implements Initializable {
     @FXML
     public void handleOnShowMemoryClick(MouseEvent e){
         try {
-            HistoryWindow window = new HistoryWindow();
-            window.displayWindowHistory();
+            HistoryWindow.getInstanceHistoryWindow().displayWindowHistory();
         }catch(Exception exp){
-            System.out.println(exp);
+            exp.printStackTrace();
         }
     }
 
@@ -118,7 +117,7 @@ public class CalculatriceController implements Initializable {
      */
     @FXML
     public void handleOnClearMemoryClick(MouseEvent e){
-        this.history.clearHistory();
+        HistoryCalculette.getHistoryInstance().clearHistory();
     }
 
     /**
@@ -145,12 +144,7 @@ public class CalculatriceController implements Initializable {
 
         try {
             if (!this.currentCalcul.getValue1().isEmpty() && !this.currentCalcul.getValue2().isEmpty()) {
-                Calcul c = this.currentCalcul.build();
-                this.displayResult(Double.toString(c.getResult()), this.currentCalcul.toString());
-                this.history.addCalcul(c);
-                this.secondValue = true;
-                this.currentCalcul = CalculBuilder.builde();
-                this.currentCalcul.addToFirstValue(Double.toString(this.history.getLastCalcul().getResult()));
+                updateResultCalcul();
             }else{
                 this.toStringCalcul.setText(this.currentCalcul.toString());
             }
@@ -197,4 +191,15 @@ public class CalculatriceController implements Initializable {
         this.toStringCalcul.setText(calcul);
     }
 
+    /**
+     * Method to update and display the result of the calcul
+     */
+    private void updateResultCalcul(){
+        Calcul c = this.currentCalcul.build();
+        this.displayResult(Double.toString(c.getResult()), this.currentCalcul.toString());
+        HistoryCalculette.getHistoryInstance().addCalcul(c);
+        this.secondValue = true;
+        this.currentCalcul = CalculBuilder.builde();
+        this.currentCalcul.addToFirstValue(Double.toString( HistoryCalculette.getHistoryInstance().getLastCalcul().getResult()));
+    }
 }

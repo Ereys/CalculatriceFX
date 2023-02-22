@@ -1,6 +1,8 @@
 package models;
 
 import calcul.Calcul;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
@@ -9,8 +11,7 @@ import java.util.ArrayList;
  */
 public class HistoryCalculette {
 
-    private ArrayList<Calcul> historyCalcul = new ArrayList<Calcul>();
-
+    private ObservableList<Calcul> historyCalcul =  FXCollections.observableArrayList();
     private static HistoryCalculette history = null;
 
     private HistoryCalculette(){}
@@ -31,7 +32,7 @@ public class HistoryCalculette {
         this.historyCalcul.add(c);
     }
 
-    public ArrayList<Calcul> getHistoryCalcul() {
+    public ObservableList<Calcul> getHistoryCalcul() {
         return historyCalcul;
     }
 

@@ -73,6 +73,8 @@ public class CalculBuilder implements AbstractCalculBuilder {
         return value2;
     }
 
+    public String getOperation(){ return value2;}
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
