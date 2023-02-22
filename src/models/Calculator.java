@@ -3,14 +3,22 @@ package models;
 import java.util.ArrayList;
 
 /**
- * This class represent the history of the calculator
+ * This class represent the history of the calculator // Singleton
  */
 public class Calculator {
 
-    private ArrayList<Calcul> historyCalcul;
+    private ArrayList<Calcul> historyCalcul = new ArrayList<Calcul>();
 
-    public Calculator(){
-        this.historyCalcul = new ArrayList<Calcul>();
+    private static Calculator history = null;
+
+    private Calculator(){
+    }
+
+    public static Calculator getHistoryInstance(){
+        if(history == null){
+            history = new Calculator();
+        }
+        return history;
     }
 
     public void addCalcul(Calcul c){

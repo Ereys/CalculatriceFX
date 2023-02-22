@@ -31,7 +31,7 @@ public class CalculatriceController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.history = new Calculator();
+        this.history = Calculator.getHistoryInstance();
         this.currentCalcul = CalculBuilder.builde();
         this.resultLabel.setText("0");
     }
@@ -103,8 +103,8 @@ public class CalculatriceController implements Initializable {
     @FXML
     public void handleOnShowMemoryClick(MouseEvent e){
         try {
-            WindowHistoryController window = new WindowHistoryController();
-            window.updateWindowHistory(this.history);
+            HistoryWindow window = new HistoryWindow();
+            window.displayWindowHistory();
         }catch(Exception exp){
             System.out.println(exp);
         }
