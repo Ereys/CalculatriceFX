@@ -21,7 +21,7 @@ public class CalculatriceApp extends Application {
         Parent root = fxmlLoader.load();
         stage.setTitle("CalculatriceApp");
         Scene scene = new Scene(root);
-        stage.setResizable(false);
+      //  stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

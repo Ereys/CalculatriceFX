@@ -102,14 +102,11 @@ public class CalculatriceController implements Initializable {
      */
     @FXML
     public void handleOnShowMemoryClick(MouseEvent e){
-        this.history.displayCalculHistory();
-        this.secondValue = false;
-        this.currentCalcul = CalculBuilder.builde();
         try {
-            displayResult("Memoire: " + this.history.getLastCalcul().toString(), this.currentCalcul.toString());
-        }catch (Exception exc){
-            this.resultLabel.setText(exc.getMessage());
-            displayResult(exc.getMessage(), "");
+            WindowHistoryController window = new WindowHistoryController();
+            window.updateWindowHistory(this.history);
+        }catch(Exception exp){
+            System.out.println(exp);
         }
     }
 
