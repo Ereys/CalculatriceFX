@@ -6,16 +6,16 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import models.Calcul;
-import models.CalculBuilder;
-import models.Calculator;
+import calcul.Calcul;
+import calcul.CalculBuilder;
+import models.HistoryCalculette;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CalculatriceController implements Initializable {
 
-    private Calculator history;
+    private HistoryCalculette history;
 
     private CalculBuilder currentCalcul;
 
@@ -31,7 +31,7 @@ public class CalculatriceController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.history = Calculator.getHistoryInstance();
+        this.history = HistoryCalculette.getHistoryInstance();
         this.currentCalcul = CalculBuilder.builde();
         this.resultLabel.setText("0");
     }
@@ -51,6 +51,7 @@ public class CalculatriceController implements Initializable {
             this.resultLabel.setText(this.currentCalcul.getValue2()); //  Result
         }
     }
+
 
     /**
      * Handle the following operation : +,-,x and /

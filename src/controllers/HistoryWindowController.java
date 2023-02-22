@@ -3,8 +3,8 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import models.Calcul;
-import models.Calculator;
+import calcul.Calcul;
+import models.HistoryCalculette;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,11 +12,11 @@ import java.util.ResourceBundle;
 public class HistoryWindowController implements Initializable {
     @FXML
     Label historyLabel;
-    private Calculator history;
+    private HistoryCalculette history;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.history = Calculator.getHistoryInstance();
+        this.history = HistoryCalculette.getHistoryInstance();
         historyLabel.setText(historyStringBuilder());
     }
 

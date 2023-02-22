@@ -1,8 +1,8 @@
-package models;
+package calcul;
 
 import utils.StringManipulation;
 
-public class CalculBuilder implements AbstractCalculBuilder{
+public class CalculBuilder implements AbstractCalculBuilder {
 
     private String  value1 = "";
     private String value2 = "";
@@ -46,7 +46,6 @@ public class CalculBuilder implements AbstractCalculBuilder{
             this.value2 = value2 + b;
         }
     }
-
     @Override
     public void subToSecondValue() {
        this.value2 =  StringManipulation.removeLastChar(this.value2);
@@ -67,6 +66,12 @@ public class CalculBuilder implements AbstractCalculBuilder{
                 Double.parseDouble(this.value2),
                 this.operator);
     }
+    public String getValue1() {
+        return value1;
+    }
+    public String getValue2() {
+        return value2;
+    }
 
     @Override
     public String toString() {
@@ -85,13 +90,6 @@ public class CalculBuilder implements AbstractCalculBuilder{
             case "2√x" ->  "√(" + this.value1 + ")";
             default -> "";
         };
-    }
-
-    public String getValue1() {
-        return value1;
-    }
-    public String getValue2() {
-        return value2;
     }
 
 }

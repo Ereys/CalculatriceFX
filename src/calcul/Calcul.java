@@ -1,4 +1,4 @@
-package models;
+package calcul;
 
 
 /**
@@ -60,14 +60,6 @@ public class Calcul {
 
     public double getResult(){
         return this.result;
-    }
-
-    public double getValue1() {
-        return value1;
-    }
-
-    public double getValue2() {
-        return value2;
     }
 
     @Override
