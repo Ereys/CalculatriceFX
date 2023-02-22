@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import calcul.Calcul;
 import calcul.CalculBuilder;
@@ -175,6 +176,16 @@ public class CalculatriceController implements Initializable {
     @FXML
     public void handleOnMinimizeClick(MouseEvent e){
         ((Stage)   root.getScene().getWindow()).setIconified(true);
+    }
+
+    @FXML public void handleHoverLabel(MouseEvent event){
+        Label label = (Label) event.getSource();
+        label.setStyle("-fx-background-color: #ded9d8");
+    }
+    @FXML
+    public void handleExitLabel(MouseEvent event){
+        Label label = (Label) event.getSource();
+        label.setStyle("-fx-background-color: white");
     }
 
     /**
