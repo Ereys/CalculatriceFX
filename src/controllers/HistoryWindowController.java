@@ -9,7 +9,7 @@ import models.Calculator;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class WindowHistoryController implements Initializable {
+public class HistoryWindowController implements Initializable {
     @FXML
     Label historyLabel;
     private Calculator history;
